@@ -1,5 +1,7 @@
 # Vue Slots - Deep Dive
 
+Like what you read? Give it a ⭐️. 
+
 ## introduction
 
 Let's say we are asked to make two cards. 
