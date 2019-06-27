@@ -32,23 +32,23 @@ export default {
 </script>
 ```
 
-And it is used like this in a parent / consumer component.
+The usage in the parent / consumer component looks like this.
 
 ```html
 <card title="John Doe" content="Award winning author."></card>
 ```
 
-But here is the problem. _Our card only works as long as both `title` and `content` are plain strings_. Anything a tad bit complicated than that and it breaks down. 
+But here's the problem. _Our card only works as long as both `title` and `content` are plain strings_. Anything a tad bit complicated than that and it breaks down. 
 
 This is where **slots** come into picture.
 
 ## what are slots?
 
-Slots are like addresses. Putting something in a slot is like asking that something to go to a particular address. 
+Slots are like post offices. Putting something in a slot is like asking that something to go to a particular address. 
 
 - If there is a place with that address, it goes there and stays. 
 
-- If the address is not specified, it ends up in a place with a pre-defined address (if that place exists).
+- If the address is not specified, it ends up in a place with a pre-defined address(if it exists) or gets lost.
 
 So with slots, our **Card** component now looks like this.
 
@@ -98,11 +98,11 @@ Amazing!
 
 As the _name_ suggests, these slots are **named**. Don't kill me.
 
-They allow us to pass an entire DOM tree to a designated place in wer component. In our previous example, we sent the `<h1>John Doe</h1>` to render within a slot named **title**.
+They allow us to pass an entire DOM tree to a designated place in our card component. In our previous example, we sent the `<h1>John Doe</h1>` to render within a slot named **title**.
 
 ## slot usage order
 
-The cool thing about slots , out of many, is that it does't in what order we use those slots. They will go to the specified place. So we could use the title slot after the default slot and it would still work as expected.
+The cool thing about slots , out of many, is that it does't matter in what order we use those slots. They will always land up in the specified place. So we could use the **title** slot after the **default** slot and it would still work as expected.
 
 ```html
 <card>
@@ -119,7 +119,7 @@ The cool thing about slots , out of many, is that it does't in what order we use
 
 We have been putting everything that needs to go into the default slot within a `<template>` tag with the `v-slot` attribute. But we really don't need to do that. 
 
-Any content we put inside our card component will get _slotted_ into the default slot, by default.(don't kill me). If a default slot is not defined, that content won't even be rendered. So the one below is the same as the ones above.
+Any content we put inside our card component will get _slotted_ into the default slot, by default(don't kill me again!). If a default slot is not defined, that content won't even be rendered. So the one below is the same as the ones above.
 
 ```html
 <card>
@@ -130,13 +130,13 @@ Any content we put inside our card component will get _slotted_ into the default
 </card>
 ```
 
-> FUN FACT : The slot component and api is inspired by the Web Component API's draft spec.
 
+> FUN FACT : The slot component and api is inspired by the Web Component API's draft spec.
 
 
 ## do slots _wrap_ what goes in them?
 
-Nope.
+Nope!
 
 Slots are renderless components. They don't render their own markup. So what you put inside a slot is what gets into the final markup. There is no wrapper `<div>` or a `<slot>` around our _slotted_ content in the final markup. Go Inspect!
 
@@ -155,13 +155,13 @@ In our case, it looks like this.
 }
 ```
 
-If we didn't use the **title** slot in our parent, it would not show up here.
+If we didn't use the **title** slot in our parent, it wouldn't show up here.
 
 ## conditionally rendering slots
 
-Using the previous knowledge, we can conditionally render slots only if they were used.
+Using the previous knowledge, we can conditionally render slots *only if they were used*.
 
-Example - It doesn't make sense for us to render the `<div class='card-title'></div>` in card component if the title slot wasn't even used.
+**Example** - It doesn't make sense for us to render the `<div class='card-title'></div>` in card component if the title slot wasn't even used.
 
 Let's change our card component's template to reflect the same.
 
